@@ -1,7 +1,7 @@
 leaflet-control-window
 =====================
 <div style="text-align:center" align="center">
-    <img src="http://www.mapkeyicons.com/demo/img/leaflet-control-window.jpg" alt="leaflet-control-window"/>
+    <img src="http:/mapshakers.github.io/leaflet-control-window/leaflet-control-window.jpg" alt="leaflet-control-window"/>
 </div>
 Simple popup window plugin for leaflet. Ready for information, prompts, dialogs, photos etc. 
 
@@ -15,7 +15,7 @@ Simple popup window plugin for leaflet. Ready for information, prompts, dialogs,
 
 
 ## Example
-~~[Check out demo and example of use!](http://filipzava.github.io/leaflet-control-bar)~~
+[Check out demo and example of use!](http://mapshakers.github.io/leaflet-control-window)
 
 
 ## Getting started
