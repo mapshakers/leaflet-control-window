@@ -17,7 +17,6 @@ Simple popup window plugin for leaflet. Ready for information, prompts, dialogs,
 ## Example
 [Check out demo and example of use!](http://mapshakers.github.io/leaflet-control-window)
 
-
 ## Getting started
 Using leaflet-control-window plugin is very easy and comfortable.
 
