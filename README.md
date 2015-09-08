@@ -1,6 +1,8 @@
 leaflet-control-window
 =====================
-
+<div style="text-align:center" align="center">
+    <img src="http://www.mapkeyicons.com/demo/img/leaflet-control-window" alt="leaflet-control-window"/>
+</div>
 Simple popup window plugin for leaflet. Ready for information, prompts, dialogs, photos etc. 
 ## Features
 *modal/modeless mode
