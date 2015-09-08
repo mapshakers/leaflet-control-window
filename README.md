@@ -4,6 +4,9 @@ leaflet-control-window
     <img src="http://www.mapkeyicons.com/demo/img/leaflet-control-window.jpg" alt="leaflet-control-window"/>
 </div>
 Simple popup window plugin for leaflet. Ready for information, prompts, dialogs, photos etc. 
+
+*Requires Leaflet and modern browser
+
 ## Features
 * modal/modeless mode
 * draggable
@@ -14,7 +17,6 @@ Simple popup window plugin for leaflet. Ready for information, prompts, dialogs,
 ## Example
 ~~[Check out demo and example of use!](http://filipzava.github.io/leaflet-control-bar)~~
 
-*Requires Leaflet and modern browser
 
 ## Getting started
 Using leaflet-control-window plugin is very easy and comfortable.
@@ -33,6 +35,9 @@ var win =  L.control.window(map,{title:'Hello world!',content:'This is my first 
            .show()
 ```
 ### How to use
+```javascript
+L.control.window( <Map> map ,<window options> options?)
+```
 There are two ways to set up control windows. It's up to you what you prefer. Following examples have the same results. 
 * using options
 ```javascript
@@ -46,13 +51,51 @@ var winMtds = L.control.window(map)
         .show()
 ```
 ### Options
-| option          | Description            | Default Value | Possible  values                                     |
+| Property        | Description            | Default Value | Possible  values                                     |
 | --------------- | ---------------------- | ------------- | ---------------------------------------------------- |
-| title            |window title             | 'mapkey'       | e.g. 'bar','school' [Check out mapkeyicons.com for icon names](http://www.mapkeyicons.com)   |
+| title           | Sets window title.           |  ''           | String, empty string or false causes no title        |
+| content         | Sets window content.           |  html code    | HTMLElement|String                                          |
+| modal           | Modal/modeless window mode?  |  false       | Boolean                                       |
+| position        | Sets where to show window.   |  'center'       | 'center','top','topRight','right','bottomRight','bottom','bottomLeft','left','topLeft' |
+
 ### Methods
-to do
+| Method          | Returns       | Description                                     |
+| --------------- | ------------- | ---------------------------------------------------- |
+| show()         | L.control.window object  |  Render window.        |
+| show(<String> position)    | L.control.window object  |  Render window on defined position.        |
+| title()         | HTMLElement|String  |  Gets window title.        |
+| title( HTMLElement|String )      | L.control.window object  |  Sets window title.        |
+| content()         | HTMLElement|String  |  Gets window contet.        |
+| content( HTMLElement|String )      | L.control.window object  |  Sets window content.        |
+| close()         | undefined  |  Hide and remove window.        |
+
+### Other options
+| Property        | Description            | Default Value | Possible  values                                     |
+| --------------- | ---------------------- | ------------- | ---------------------------------------------------- |
+| closeButton     | Render close button?    |  true         | Boolean                                           |
+| className       | Sets container class to style window.   |  'control-window'         | String                   |
+| maxWidth        | Sets maximum width of window container in pixels. |   600        | Number                          |
+| prompt          | JSON object for prompt buttons.           |  undefined         | JSON {callback: ..., buttonOK: ..., buttonCancel: ...}    |
+| prompt.callback | Function to run after OK button is clicked.         |  undefined        | e.g. ```function(){alert('hello')}```    |
+| prompt.buttonOK | Text for ```OK``` button.     |  'OK'        | String                       |
+| prompt.buttonCancel | Text for ```Cancel``` button         |  'CANCEL'         | String   |
+| visible | Render window immediately.         |  false         | Boolean   |
+
+###Other  Methods
+| Method          | Returns       | Description                                     |
+| --------------- | ------------- | ---------------------------------------------------- |
+| showOn( <point> [x,y] pixel position)    | L.control.window object  |  Render window on defined position in pixels ([x,y]).        |
+| hide()    | L.control.window object  |  Hide window, can be rendered by ```.show()``` method.     |
+| prompt( JSON object )      | L.control.window object  |  Sets prompt option.      |
+| setPromptCallback( <function> )      | L.control.window object  |  Sets prompt option.      |
+
 ### Events
-to do 
+| Event          | Description                                     |
+| ---------------|------------------------------------------------ |
+| show           | Fired when window is shown.         |
+| hide           | Fired when window is hidden.         |
+| close          | Fired when window is closed.         |
+
 
 ### License
 **leaflet-control-window** is free software, and may be redistributed under the MIT-LICENSE.

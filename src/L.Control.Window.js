@@ -10,7 +10,8 @@ L.Control.Window = L.Control.extend({
         content: undefined,
         prompt: undefined,
         maxWidth: 600,
-        modal: false
+        modal: false,
+        position: 'center'
     },
 
     initialize: function (map, options) {
@@ -24,14 +25,14 @@ L.Control.Window = L.Control.extend({
             map.controlWindow.push(this)
         }
 
-        var modality = 'nonmodal'
+        var modality = 'nonmodal';
 
         if (this.options.modal){
             modality = 'modal'
         }
 
         // Create popup window container
-        this._wrapper = L.DomUtil.create('div',modality);
+        this._wrapper = L.DomUtil.create('div',modality+' leaflet-control-window-wrapper');
 
 
         this._container = L.DomUtil.create('div', 'leaflet-control leaflet-control-window '+this.options.className,this._wrapper);
@@ -65,7 +66,7 @@ L.Control.Window = L.Control.extend({
         // Attach event to close button
         if (this.options.closeButton) {
             var close = this._closeButton;
-            L.DomEvent.on(close, 'click', this.hide, this);
+            L.DomEvent.on(close, 'click', this.close, this);
         }
 
         if (this.options.title){
@@ -120,7 +121,7 @@ L.Control.Window = L.Control.extend({
 
         if (this._closeButton && this._close) {
             var close = this._closeButton;
-            L.DomEvent.off(close, 'click', this.hide, this);
+            L.DomEvent.off(close, 'click', this.close, this);
         }
         return this;
     },
@@ -130,7 +131,11 @@ L.Control.Window = L.Control.extend({
     },
     show: function (position) {
 
-        L.DomUtil.addClass(this._container, 'visible');
+        if (position){
+            this.options.position = position
+        }
+
+        L.DomUtil.addClass(this._wrapper, 'visible');
 
         var width = window.innerWidth
             || document.documentElement.clientWidth
@@ -145,31 +150,33 @@ L.Control.Window = L.Control.extend({
         var thisHeight = this._container.offsetHeight;
         var margin = 8;
 
+
+
         var offset =0; // (map.controlWindow.length-1)*10;
 
-        if (position == 'topLeft'){
-            this.showOnCoordinates([0,offset])
-        } else if (position == 'left') {
-            this.showOnCoordinates([0, height/2-thisHeight/2-margin+offset])
-        } else if (position == 'bottomLeft') {
-            this.showOnCoordinates([0, height-thisHeight-margin*2-offset])
-        } else if (position == 'top') {
-            this.showOnCoordinates([width/2-thisWidth/2-margin,offset])
-        } else if (position == 'topRight') {
-            this.showOnCoordinates([width-thisWidth-margin*2, offset])
-        } else if (position == 'right') {
-            this.showOnCoordinates([width-thisWidth-margin*2, height/2-thisHeight/2-margin+offset])
-        } else if (position == 'bottomRight') {
-            this.showOnCoordinates([width-thisWidth-margin*2, height-thisHeight-margin*2-offset])
-        } else if (position == 'bottom') {
-            this.showOnCoordinates([width/2-thisWidth/2-margin, height-thisHeight-margin*2-offset])
+        if (this.options.position == 'topLeft'){
+            this.showOn([0,offset])
+        } else if (this.options.position == 'left') {
+            this.showOn([0, height/2-thisHeight/2-margin+offset])
+        } else if (this.options.position == 'bottomLeft') {
+            this.showOn([0, height-thisHeight-margin*2-offset])
+        } else if (this.options.position == 'top') {
+            this.showOn([width/2-thisWidth/2-margin,offset])
+        } else if (this.options.position == 'topRight') {
+            this.showOn([width-thisWidth-margin*2, offset])
+        } else if (this.options.position == 'right') {
+            this.showOn([width-thisWidth-margin*2, height/2-thisHeight/2-margin+offset])
+        } else if (this.options.position == 'bottomRight') {
+            this.showOn([width-thisWidth-margin*2, height-thisHeight-margin*2-offset])
+        } else if (this.options.position == 'bottom') {
+            this.showOn([width/2-thisWidth/2-margin, height-thisHeight-margin*2-offset])
         } else {
-            this.showOnCoordinates([width/2-thisWidth/2-margin, height/2-thisHeight/2-margin+offset])
+            this.showOn([width/2-thisWidth/2-margin, height/2-thisHeight/2-margin+offset])
         }
 
         return this;
     },
-    showOnCoordinates: function(point){
+    showOn: function(point){
 
         this.setContentMaxHeight();
         L.DomUtil.setPosition(this._container, L.point(point[0],point[1]));
@@ -177,7 +184,7 @@ L.Control.Window = L.Control.extend({
         var draggable = new L.Draggable(this._container,this._containerTitleBar);
         draggable.enable();
 
-        L.DomUtil.addClass(this._container, 'visible');
+        L.DomUtil.addClass(this._wrapper, 'visible');
         this.fire('show');
         return this;
     },
@@ -186,8 +193,7 @@ L.Control.Window = L.Control.extend({
         if (index > -1) {
             map.controlWindow.splice(index, 1);
         }
-        L.DomUtil.removeClass(this._container, 'visible');
-        this.remove(this.map);
+        L.DomUtil.removeClass(this._wrapper, 'visible');
         this.fire('hide');
         return this;
     },
@@ -215,15 +221,16 @@ L.Control.Window = L.Control.extend({
 
         this.setPromptCallback(promptObject.callback);
 
-        var cancel = this.options.prompt.titleCancel || 'CANCEL';
-        var ok = this.options.prompt.titleOK || 'OK';
+        var cancel = this.options.prompt.buttonCancel || 'CANCEL';
+
+        var ok = this.options.prompt.buttonOK || 'OK';
 
         var btnOK= L.DomUtil.create('button','',this._containerPromptButtons);
         L.DomEvent.on(btnOK, 'click',this.promptCallback, this);
         btnOK.innerHTML=ok;
 
         var btnCancel= L.DomUtil.create('button','',this._containerPromptButtons);
-        L.DomEvent.on(btnCancel, 'click', this.hide, this);
+        L.DomEvent.on(btnCancel, 'click', this.close, this);
         btnCancel.innerHTML=cancel
 
         return this;
@@ -238,7 +245,7 @@ L.Control.Window = L.Control.extend({
         if (this.options.closeButton) {
             this._closeButton = L.DomUtil.create('a', 'close',this._container);
             this._closeButton.innerHTML = '&times;';
-            L.DomEvent.on(this._closeButton, 'click', this.hide, this);
+            L.DomEvent.on(this._closeButton, 'click', this.close, this);
         }
         return this;
 
@@ -246,8 +253,9 @@ L.Control.Window = L.Control.extend({
     setPromptCallback : function(callback){
         var self = this;
         if (typeof(callback)!= 'function') { callback = function() {console.warn('No callback function specified!');}}
-        var cb = function() { self.hide();callback();}
+        var cb = function() { self.close();callback();};
         this.promptCallback = cb;
+        return this;
     },
 
     setContentMaxHeight : function(){
@@ -266,6 +274,12 @@ L.Control.Window = L.Control.extend({
 
         var maxHeight = height - margin;
         this._containerContent.setAttribute('style','max-height:'+maxHeight+'px')
+    },
+    close : function(){
+        this.hide();
+        this.remove(this.map);
+        this.fire('close');
+        return undefined;
     }
 });
 
