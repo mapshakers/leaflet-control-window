@@ -84,7 +84,7 @@ var winMtds = L.control.window(map)
 ###Other  Methods
 | Method          | Returns       | Description                                     |
 | --------------- | ------------- | ---------------------------------------------------- |
-| showOn( <point> [x,y] pixel position)    | L.control.window object  |  Render window on defined position in pixels ([x,y]).        |
+| showOn( <point> [x,y] )    | L.control.window object  |  Render window on defined position in pixels ([x,y]).        |
 | hide()    | L.control.window object  |  Hide window, can be rendered by ```.show()``` method.     |
 | prompt( JSON object )      | L.control.window object  |  Sets prompt option.      |
 | setPromptCallback( <function> )      | L.control.window object  |  Sets prompt option.      |
