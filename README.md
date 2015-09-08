@@ -53,20 +53,20 @@ var winMtds = L.control.window(map)
 ### Options
 | Property        | Description            | Default Value | Possible  values                                     |
 | --------------- | ---------------------- | ------------- | ---------------------------------------------------- |
-| title           | Sets window title.           |  ''           | String, empty string or false causes no title        |
-| content         | Sets window content.           |  html code    | HTMLElement|String                                          |
-| modal           | Modal/modeless window mode?  |  false       | Boolean                                       |
-| position        | Sets where to show window.   |  'center'       | 'center','top','topRight','right','bottomRight','bottom','bottomLeft','left','topLeft' |
+| title           | Sets window title.           |  null           | String, empty string or false causes no title        |
+| content         | Sets window content.           | null    | HTMLElement &#124; String                                          |
+| modal           | Modal&#124;modeless window mode?  |  false       | Boolean                                       |
+| position        | Sets where to show window.   |  'center'       | 'center', 'top', 'topRight', 'right', 'bottomRight', 'bottom', 'bottomLeft', 'left', 'topLeft' |
 
 ### Methods
 | Method          | Returns       | Description                                     |
 | --------------- | ------------- | ---------------------------------------------------- |
 | show()         | L.control.window object  |  Render window.        |
 | show(<String> position)    | L.control.window object  |  Render window on defined position.        |
-| title()         | HTMLElement|String  |  Gets window title.        |
-| title( HTMLElement|String )      | L.control.window object  |  Sets window title.        |
-| content()         | HTMLElement|String  |  Gets window contet.        |
-| content( HTMLElement|String )      | L.control.window object  |  Sets window content.        |
+| title()         | HTMLElement &#124; String  |  Gets window title.        |
+| title( HTMLElement &#124; String )      | L.control.window object  |  Sets window title.        |
+| content()         | HTMLElement &#124; String  |  Gets window contet.        |
+| content( HTMLElement &#124; String )      | L.control.window object  |  Sets window content.        |
 | close()         | undefined  |  Hide and remove window.        |
 
 ### Other options
@@ -75,7 +75,7 @@ var winMtds = L.control.window(map)
 | closeButton     | Render close button?    |  true         | Boolean                                           |
 | className       | Sets container class to style window.   |  'control-window'         | String                   |
 | maxWidth        | Sets maximum width of window container in pixels. |   600        | Number                          |
-| prompt          | JSON object for prompt buttons.           |  undefined         | JSON {callback: ..., buttonOK: ..., buttonCancel: ...}    |
+| prompt          | JSON object for prompt buttons.           |  undefined         | JSON ```{callback: ..., buttonOK: ..., buttonCancel: ...}```   |
 | prompt.callback | Function to run after OK button is clicked.         |  undefined        | e.g. ```function(){alert('hello')}```    |
 | prompt.buttonOK | Text for ```OK``` button.     |  'OK'        | String                       |
 | prompt.buttonCancel | Text for ```Cancel``` button         |  'CANCEL'         | String   |
