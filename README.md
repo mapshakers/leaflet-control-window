@@ -44,7 +44,9 @@ var winMtds = L.control.window(map)
         .show()
 ```
 ### Options
-to do
+| option          | Description            | Default Value | Possible  values                                     |
+| --------------- | ---------------------- | ------------- | ---------------------------------------------------- |
+| title            |window title             | 'mapkey'       | e.g. 'bar','school' [Check out mapkeyicons.com for icon names](http://www.mapkeyicons.com)   |
 ### Methods
 to do
 ### Events

@@ -228,7 +228,21 @@ L.Control.Window = L.Control.extend({
 
         return this;
     },
+    container : function(containerContent){
+        if (containerContent==undefined){
+            return this._container.innerHTML
+        }
 
+        this._container.innerHTML = containerContent;
+
+        if (this.options.closeButton) {
+            this._closeButton = L.DomUtil.create('a', 'close',this._container);
+            this._closeButton.innerHTML = '&times;';
+            L.DomEvent.on(this._closeButton, 'click', this.hide, this);
+        }
+        return this;
+
+    },
     setPromptCallback : function(callback){
         var self = this;
         if (typeof(callback)!= 'function') { callback = function() {console.warn('No callback function specified!');}}
