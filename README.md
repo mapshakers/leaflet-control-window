@@ -54,7 +54,7 @@ var winMtds = L.control.window(map)
 | Property        | Description            | Default Value | Possible  values                                     |
 | --------------- | ---------------------- | ------------- | ---------------------------------------------------- |
 | title           | Sets window title.           |  null           | String, empty string or false causes no title        |
-| content         | Sets window content.           | null    | HTMLElement &#124; String                                          |
+| content         | Sets window content.           | null    | HTMLElement&#124;String                                          |
 | modal           | Modal&#124;modeless window mode?  |  false       | Boolean                                       |
 | position        | Sets where to show window.   |  'center'       | 'center', 'top', 'topRight', 'right', 'bottomRight', 'bottom', 'bottomLeft', 'left', 'topLeft' |
 
@@ -63,10 +63,10 @@ var winMtds = L.control.window(map)
 | --------------- | ------------- | ---------------------------------------------------- |
 | show()         | L.control.window object  |  Render window.        |
 | show(<String> position)    | L.control.window object  |  Render window on defined position.        |
-| title()         | HTMLElement &#124; String  |  Gets window title.        |
-| title( HTMLElement &#124; String )      | L.control.window object  |  Sets window title.        |
-| content()         | HTMLElement &#124; String  |  Gets window contet.        |
-| content( HTMLElement &#124; String )      | L.control.window object  |  Sets window content.        |
+| title()         | HTMLElement&#124;String  |  Gets window title.        |
+| title(HTMLElement&#124;String)      | L.control.window object  |  Sets window title.        |
+| content()         | HTMLElement&#124;String  |  Gets window contet.        |
+| content(HTMLElement&#124;String)      | L.control.window object  |  Sets window content.        |
 | close()         | undefined  |  Hide and remove window.        |
 
 ### Other options
@@ -84,10 +84,10 @@ var winMtds = L.control.window(map)
 ###Other  Methods
 | Method          | Returns       | Description                                     |
 | --------------- | ------------- | ---------------------------------------------------- |
-| showOn( <point> [x,y] )    | L.control.window object  |  Render window on defined position in pixels ([x,y]).        |
+| showOn(<point> [x,y])    | L.control.window object  |  Render window on defined position in pixels ([x,y]).        |
 | hide()    | L.control.window object  |  Hide window, can be rendered by ```.show()``` method.     |
-| prompt( JSON object )      | L.control.window object  |  Sets prompt option.      |
-| setPromptCallback( <function> )      | L.control.window object  |  Sets prompt option.      |
+| prompt(JSON object)      | L.control.window object  |  Sets prompt option.      |
+| setPromptCallback(<function>)      | L.control.window object  |  Sets prompt option.      |
 
 ### Events
 | Event          | Description                                     |
