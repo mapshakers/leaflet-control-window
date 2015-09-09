@@ -39,15 +39,16 @@
     transform-style: preserve-3d;
 
     /** BOX SHADOW **/
-    -webkit-box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.75);
-    box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
 
 }
 
 .control-window{
     background-color: #ffffff;
     color: #353535;
+    font: 14px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 
@@ -66,7 +67,7 @@
     width: 28px;
     height: 28px;
     border-radius: 100%;
-
+    font: 16px/14px Tahoma, Verdana, sans-serif;
     cursor: pointer;
     z-index:30;
 
@@ -77,7 +78,7 @@
 
 
     color: #e4e4e4;
-    font-size: 24pt;
+    font-size: 22pt;
     text-align: center;
     line-height: 0.9em;
 }
@@ -102,7 +103,7 @@
 .leaflet-control-window .promptButtons{
     width: 100%;
     text-align: right;
-    padding: 10px;
+    padding: 20px;
 }
 
 .leaflet-control-window button{
