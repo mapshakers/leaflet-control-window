@@ -1,3 +1,15 @@
+
+.leaflet-control-window-wrapper{
+    display: none;
+    opacity: 0;
+
+    -webkit-overflow-scrolling: touch;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
 .nonmodal{
     z-index: 6000;
 }
@@ -12,12 +24,6 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.leaflet-control-window-wrapper{
-    display: none;
-    opacity: 0;
-}
-
-
 .visible {
     display: block;
     opacity: 1;
@@ -25,10 +31,6 @@
 
 .leaflet-control-window{
     position: absolute;
-    -webkit-overflow-scrolling: touch;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     z-index: 2000;
     border-radius: 2px;
     margin: 8px;
@@ -101,9 +103,8 @@
 }
 
 .leaflet-control-window .promptButtons{
-    width: 100%;
     text-align: right;
-    padding: 20px;
+    padding: 16px;
 }
 
 .leaflet-control-window button{
