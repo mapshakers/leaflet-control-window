@@ -14,7 +14,6 @@ L.Control.Window = L.Control.extend({
         modal: false,
         position: 'center'
     },
-
     initialize: function (container, options) {
         var self = this;
 
@@ -32,7 +31,6 @@ L.Control.Window = L.Control.extend({
         // Create popup window container
         this._wrapper = L.DomUtil.create('div',modality+' leaflet-control-window-wrapper', L.DomUtil.get(this.options.element));
 
-
         this._container = L.DomUtil.create('div', 'leaflet-control leaflet-control-window '+this.options.className,this._wrapper);
         this._container.setAttribute('style','max-width:'+this.options.maxWidth+'px');
 
@@ -45,10 +43,6 @@ L.Control.Window = L.Control.extend({
             this._closeButton = L.DomUtil.create('a', 'close',this._containerTitleBar);
             this._closeButton.innerHTML = '&times;';
         }
-
-     ///   var controlContainer = map._controlContainer;
-       // controlContainer.insertBefore(this._wrapper, controlContainer.lastChild);
-
 
         // Make sure we don't drag the map when we interact with the content
         var stop = L.DomEvent.stopPropagation;
@@ -66,21 +60,17 @@ L.Control.Window = L.Control.extend({
             var close = this._closeButton;
             L.DomEvent.on(close, 'click', this.close, this);
         }
-
         if (this.options.title){
-            this.title(this.options.title)
+            this.title(this.options.title);
         }
-
         if (this.options.content) {
-            this.content(this.options.content)
+            this.content(this.options.content);
         }
-
         if (typeof(this.options.prompt)=='object') {
-            this.prompt(this.options.prompt)
+            this.prompt(this.options.prompt);
         }
-
         if (this.options.visible){
-            this.show()
+            this.show();
         }
 
         //map.on('resize',function(){self.mapResized()});
@@ -118,7 +108,6 @@ L.Control.Window = L.Control.extend({
         }
         return this;
     },
-
     mapResized : function(){
       // this.show()
     },
@@ -145,7 +134,7 @@ L.Control.Window = L.Control.extend({
         var left = rect.left;
         var offset =0;
 
-
+        // SET POSITION OF WINDOW
         if (this.options.position == 'topLeft'){
             this.showOn([left,top+offset])
             } else if (this.options.position == 'left') {
@@ -171,7 +160,7 @@ L.Control.Window = L.Control.extend({
     showOn: function(point){
 
         this.setContentMaxHeight();
-        L.DomUtil.setPosition(this._container, L.point(point[0],point[1]));
+        L.DomUtil.setPosition(this._container, L.point(Math.round(point[0]),Math.round(point[1]),true));
 
         var draggable = new L.Draggable(this._container,this._containerTitleBar);
         draggable.enable();
@@ -190,7 +179,6 @@ L.Control.Window = L.Control.extend({
     getContainer: function () {
         return this._containerContent;
     },
-
     content: function (content) {
         if (content==undefined){
             return this.options.content
@@ -199,7 +187,6 @@ L.Control.Window = L.Control.extend({
         this.getContainer().innerHTML = content;
         return this;
     },
-
     prompt : function(promptObject){
 
         if (promptObject==undefined){
@@ -246,7 +233,6 @@ L.Control.Window = L.Control.extend({
         this.promptCallback = cb;
         return this;
     },
-
     setContentMaxHeight : function(){
         var margin = 68;
 
