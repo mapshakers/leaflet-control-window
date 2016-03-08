@@ -196,15 +196,25 @@ L.Control.Window = L.Control.extend({
         this.options.prompt = promptObject;
 
         this.setPromptCallback(promptObject.callback);
+        
+        this.setActionCallback(promptObject.action);
 
         var cancel = this.options.prompt.buttonCancel || 'CANCEL';
 
         var ok = this.options.prompt.buttonOK || 'OK';
 
+        var action = this.options.prompt.buttonAction || undefined;
+
+        if (action != undefined) {
+            var btnAction = L.DomUtil.create('button','',this._containerPromptButtons);
+            L.DomEvent.on(btnAction, 'click',this.action, this);
+            btnAction.innerHTML=action;
+        }
+
         var btnOK= L.DomUtil.create('button','',this._containerPromptButtons);
         L.DomEvent.on(btnOK, 'click',this.promptCallback, this);
         btnOK.innerHTML=ok;
-
+        
         var btnCancel= L.DomUtil.create('button','',this._containerPromptButtons);
         L.DomEvent.on(btnCancel, 'click', this.close, this);
         btnCancel.innerHTML=cancel
@@ -233,6 +243,14 @@ L.Control.Window = L.Control.extend({
         this.promptCallback = cb;
         return this;
     },
+    setActionCallback : function(callback){
+        var self = this;
+        if (typeof(callback)!= 'function') { callback = function() {console.warn('No callback function specified!');}}
+        var cb = function() { self.hide();callback();};
+        this.action = cb;
+        return this;
+    },
+
     setContentMaxHeight : function(){
         var margin = 68;
 

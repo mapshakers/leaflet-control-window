@@ -5,6 +5,8 @@ leaflet-control-window
 </div>
 Simple popup window plugin for leaflet. Ready for information, prompts, dialogs, photos etc. 
 
+The optional action button allows for multiple interaction with the same window as it hides the window instead of closing it.
+
 *Requires Leaflet and modern browser
 
 ## Features
@@ -12,6 +14,7 @@ Simple popup window plugin for leaflet. Ready for information, prompts, dialogs,
 * draggable
 * customisable
 * responsive
+* optional Action button
 
 
 ## Example
@@ -74,8 +77,10 @@ var winMtds = L.control.window(map)
 | closeButton     | Render close button?    |  true         | Boolean                                           |
 | className       | Sets container class to style window.   |  'control-window'         | String                   |
 | maxWidth        | Sets maximum width of window container in pixels. |   600        | Number                          |
-| prompt          | JSON object for prompt buttons.           |  undefined         | JSON ```{callback: ..., buttonOK: ..., buttonCancel: ...}```   |
+| prompt          | JSON object for prompt buttons.           |  undefined         | JSON ```{callback: ..., action: ..., buttonAction: ..., buttonOK: ..., buttonCancel: ...}```   |
 | prompt.callback | Function to run after OK button is clicked.         |  undefined        | e.g. ```function(){alert('hello')}```    |
+| prompt.action | Function to run after ACTION button is clicked.     |  undefined        |  e.g. ```function(){alert('I\'ll do something')}```                        |
+| prompt.buttonAction | Text for ```Action``` button.     |  button hidden by default        | String                       |
 | prompt.buttonOK | Text for ```OK``` button.     |  'OK'        | String                       |
 | prompt.buttonCancel | Text for ```Cancel``` button         |  'CANCEL'         | String   |
 | visible | Render window immediately.         |  false         | Boolean   |
