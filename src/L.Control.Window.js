@@ -58,7 +58,7 @@ L.Control.Window = L.Control.extend({
         // Attach event to close button
         if (this.options.closeButton) {
             var close = this._closeButton;
-            L.DomEvent.on(close, 'click', this.close, this);
+            L.DomEvent.on(close, 'click', this.hide, this);
         }
         if (this.options.title){
             this.title(this.options.title);
