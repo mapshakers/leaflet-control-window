@@ -70,6 +70,8 @@ var winMtds = L.control.window(map)
 | content()         | HTMLElement&#124;String  |  Gets window contet.        |
 | content(HTMLElement&#124;String)      | L.control.window object  |  Sets window content.        |
 | close()         | undefined  |  Hide and remove window.        |
+| enableBtn()         | undefined  |  Enables the OK button of the window (default).       |
+| disableBtn()         | undefined  |  Disables the OK button of the window.        |
 
 ### Other options
 | Property        | Description            | Default Value | Possible  values                                     |
