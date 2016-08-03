@@ -75,6 +75,14 @@ L.Control.Window = L.Control.extend({
 
         //map.on('resize',function(){self.mapResized()});
     },
+    disableBtn: function(){
+			this._btnOK.disabled=true;
+			this._btnOK.className='disabled';
+	},
+	enableBtn: function(){
+			this._btnOK.disabled=false;
+			this._btnOK.className='';
+	},
     title: function(titleContent){
         if (titleContent==undefined){
             return this.options.title
@@ -214,6 +222,8 @@ L.Control.Window = L.Control.extend({
         var btnOK= L.DomUtil.create('button','',this._containerPromptButtons);
         L.DomEvent.on(btnOK, 'click',this.promptCallback, this);
         btnOK.innerHTML=ok;
+        
+        this._btnOK=btnOK;
         
         var btnCancel= L.DomUtil.create('button','',this._containerPromptButtons);
         L.DomEvent.on(btnCancel, 'click', this.close, this);

@@ -123,3 +123,7 @@
 .leaflet-control-window button:hover {
     opacity: 1;
 }
+.disabled{
+	opacity: .5;
+	pointer-events:none;
+}
