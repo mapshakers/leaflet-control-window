@@ -1,6 +1,6 @@
 L.Control.Window = L.Control.extend({
 
-    includes: L.Mixin.Events,
+    includes: L.Evented.prototype || L.Mixin.Events,
 
     options: {
         element: 'map',
