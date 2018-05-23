@@ -84,7 +84,7 @@ var winMtds = L.control.window(map)
 | prompt.action | Function to run after ACTION button is clicked.     |  undefined        |  e.g. ```function(){alert('I\'ll do something')}```                        |
 | prompt.buttonAction | Text for ```Action``` button.     |  button hidden by default        | String                       |
 | prompt.buttonOK | Text for ```OK``` button.     |  'OK'        | String                       |
-| prompt.buttonCancel | Text for ```Cancel``` button         |  'CANCEL'         | String   |
+| prompt.buttonCancel | Text for ```Cancel``` button         |  button hidden by default        | String   |
 | visible | Render window immediately.         |  false         | Boolean   |
 
 ###Other  Methods

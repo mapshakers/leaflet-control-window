@@ -207,7 +207,7 @@ L.Control.Window = L.Control.extend({
         
         this.setActionCallback(promptObject.action);
 
-        var cancel = this.options.prompt.buttonCancel || 'CANCEL';
+        var cancel = this.options.prompt.buttonCancel || undefined;
 
         var ok = this.options.prompt.buttonOK || 'OK';
 
@@ -225,9 +225,11 @@ L.Control.Window = L.Control.extend({
         
         this._btnOK=btnOK;
         
-        var btnCancel= L.DomUtil.create('button','',this._containerPromptButtons);
-        L.DomEvent.on(btnCancel, 'click', this.close, this);
-        btnCancel.innerHTML=cancel
+        if (cancel != undefined) {
+            var btnCancel= L.DomUtil.create('button','',this._containerPromptButtons);
+            L.DomEvent.on(btnCancel, 'click', this.close, this);
+            btnCancel.innerHTML=cancel
+        }
 
         return this;
     },
