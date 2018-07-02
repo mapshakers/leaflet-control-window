@@ -87,7 +87,7 @@ var winMtds = L.control.window(map)
 | prompt.buttonCancel | Text for ```Cancel``` button         |  button hidden by default        | String   |
 | visible | Render window immediately.         |  false         | Boolean   |
 
-###Other  Methods
+### Other  Methods
 | Method          | Returns       | Description                                     |
 | --------------- | ------------- | ---------------------------------------------------- |
 | showOn(<point> [x,y])    | L.control.window object  |  Render window on defined position in pixels ([x,y]).        |
