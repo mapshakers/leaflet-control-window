@@ -11,15 +11,15 @@ type CallbackFunction = () => void
 declare module "leaflet" {
   namespace Control {
     interface WindowOptions extends ControlOptions {
-      element: string
-      className: string
-      visible: boolean
-      title: string
-      closeButton: boolean
-      content: string
-      prompt: PromptObject
-      maxWidth: number
-      modal: boolean
+      element?: string
+      className?: string
+      visible?: boolean
+      title?: string
+      closeButton?: boolean
+      content?: string
+      prompt?: PromptObject
+      maxWidth?: number
+      modal?: boolean
     }
 
     interface PromptObject {
