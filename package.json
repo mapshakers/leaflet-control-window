@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Simple popup window plugin for leaflet.",
   "main": "src/L.Control.Window.js",
+  "types": "L.control.window.d.ts",
   "author": "Filip Zavadil",
   "license": "MIT",
   "dependencies": {
