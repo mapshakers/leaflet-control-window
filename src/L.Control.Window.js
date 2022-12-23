@@ -273,12 +273,16 @@ L.Control.Window = L.Control.extend({
             margin += this._containerPromptButtons.offsetHeight-20
         }
 
-        var el =  L.DomUtil.get(this.options.element)
-        var rect = el.getBoundingClientRect();
-        var height = rect.bottom -rect.top;
+        var maxHeight = this.options.maxHeight;
+        if (maxHeight==undefined) {
+            var el =  L.DomUtil.get(this.options.element)
+            var rect = el.getBoundingClientRect();
+            var height = rect.bottom -rect.top;
 
-        var maxHeight = height - margin;
-        this._containerContent.setAttribute('style','max-height:'+maxHeight+'px')
+            maxHeight = height - margin;
+        }
+        this._container.setAttribute('style','max-height:'+maxHeight+'px;overflow:hidden;max-width:'+this.options.maxWidth+'px');
+        this._containerContent.setAttribute('style','max-height:'+(maxHeight-60)+'px')
     },
     close : function(){
         this.hide();

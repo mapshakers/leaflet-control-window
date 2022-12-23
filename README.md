@@ -79,6 +79,7 @@ var winMtds = L.control.window(map)
 | closeButton     | Render close button?    |  true         | Boolean                                           |
 | className       | Sets container class to style window.   |  'control-window'         | String                   |
 | maxWidth        | Sets maximum width of window container in pixels. |   600        | Number                          |
+| maxHeight       | Sets maximum height of window container in pixels. |   undefined        | Number                          |
 | prompt          | JSON object for prompt buttons.           |  undefined         | JSON ```{callback: ..., action: ..., buttonAction: ..., buttonOK: ..., buttonCancel: ...}```   |
 | prompt.callback | Function to run after OK button is clicked.         |  undefined        | e.g. ```function(){alert('hello')}```    |
 | prompt.action | Function to run after ACTION button is clicked.     |  undefined        |  e.g. ```function(){alert('I\'ll do something')}```                        |
